@@ -5,6 +5,12 @@ def process_posts(raw_file_path, processed_file_path="data/processed_posts.json"
         posts = json.load(file)
         for post in posts:
             extract_metadata(post['text'])
+            post = {'text': 'abc', 'engagement': 345}
+            metadata = {
+                'line_count': 10,
+                'language': 'English',
+                'tag': ['Mental Health', 'Motivation']
+            }
 
 def extract_metadata(post):
     return {
