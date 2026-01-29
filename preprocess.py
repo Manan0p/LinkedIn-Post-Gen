@@ -6,7 +6,12 @@ def process_posts(raw_file_path, processed_file_path="data/processed_posts.json"
         for post in posts:
             extract_metadata(post['text'])
 
-def extract_metadata(text):
+def extract_metadata(post):
+    return {
+        'line_count': 10,
+        'language': 'English',
+        'tag': ['Mental Health', 'Motivation']
+    }
 
 if __name__ == "__main__":
     process_posts("data/raw_posts.json", "data/processed_posts.json")
