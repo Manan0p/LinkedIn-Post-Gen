@@ -2,19 +2,15 @@ import json
 
 def process_posts(raw_file_path, processed_file_path="data/processed_posts.json"):
     enriched_posts = []
+
     with open(raw_file_path, encoding="utf-8") as file:
         posts = json.load(file)
+        
         for post in posts:
-            extract_metadata(post['text'])
-            post_with_metadata =post | metadata
+            metadata = extract_metadata(post['text'])
+            post_with_metadata = post | metadata
             enriched_posts.append(post_with_metadata)
             
-            post = {'text': 'abc', 'engagement': 345}
-            metadata = {
-                'line_count': 10,
-                'language': 'English',
-                'tag': ['Mental Health', 'Motivation']
-            }
         
         for epost in enriched_posts:
             print(epost)
