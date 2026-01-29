@@ -5,6 +5,7 @@ def process_posts(raw_file_path, processed_file_path="data/processed_posts.json"
         posts = json.load(file)
         for post in posts:
             extract_metadata(post['text'])
+            post_with_metadata =post | metadata
             post = {'text': 'abc', 'engagement': 345}
             metadata = {
                 'line_count': 10,
