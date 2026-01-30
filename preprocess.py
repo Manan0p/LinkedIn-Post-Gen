@@ -33,11 +33,11 @@ def extract_metadata(post):
 
     pt = PromptTemplate.from_template(template)
     chain =  pt | llm
-    respone = chain.invoke(input={'post': post})
+    response = chain.invoke(input={'post': post})
 
     try:
         json_parser = JsonOutputParser()
-        res = json_parser.parse(respone.content)
+        res = json_parser.parse(response.content)
         
     except OutputParserException:
         raise OutputParserException("Context too big. Unable to parse the jobs.")
