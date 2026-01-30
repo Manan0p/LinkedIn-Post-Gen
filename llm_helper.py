@@ -4,4 +4,4 @@ import os
 
 load_dotenv()
 
-llm = ChatGroq(groq_api_key = os.getenv())
+llm = ChatGroq(groq_api_key = os.getenv("GROQ_API_KEY"))
