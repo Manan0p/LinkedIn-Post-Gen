@@ -2,6 +2,7 @@ import json
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
 from langchain_core.exceptions import OutputParserException
+from llm_helper import llm
 
 def process_posts(raw_file_path, processed_file_path="data/processed_posts.json"):
     enriched_posts = []
@@ -29,6 +30,9 @@ def extract_metadata(post):
     Here is the actual post on which you need to perform this task:  
     {post}
     '''
+
+    pt = PromptTemplate.from_template(template)
+    chain =  llm | pt
 
     return {
         'line_count': 10,
