@@ -4,6 +4,10 @@ from langchain_core.output_parsers import JsonOutputParser
 from langchain_core.exceptions import OutputParserException
 from llm_helper import llm
 
+def sanitize_text(text: str) -> str:
+    """Replace invalid unicode surrogates before sending to APIs."""
+    return text.encode("utf-8", "surrogatepass").decode("utf-8", "replace")
+
 def process_posts(raw_file_path, processed_file_path="data/processed_posts.json"):
     enriched_posts = []
 
@@ -20,6 +24,7 @@ def process_posts(raw_file_path, processed_file_path="data/processed_posts.json"
             print(epost)
 
 def extract_metadata(post):
+    post = sanitize_text(post)
     template = '''
     You are given a LinkedIn post. You need to extract number of lines, language of the post and tags.
     1. Return a valid JSON. No preamble. 
