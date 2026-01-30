@@ -33,6 +33,7 @@ def extract_metadata(post):
 
     pt = PromptTemplate.from_template(template)
     chain =  llm | pt
+    chain.invoke(input={'post': post})
 
     return {
         'line_count': 10,
