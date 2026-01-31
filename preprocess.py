@@ -26,7 +26,9 @@ def process_posts(raw_file_path, processed_file_path="data/processed_posts.json"
         unified_tags = get_unified_tags(enriched_posts)
 
 def get_unified_tags(posts_with_metadata):
-    
+    unique_tags = set()
+    for post in posts_with_metadata:
+        unique_tags.update()
 
 def extract_metadata(post):
     post = sanitize_text(post)
