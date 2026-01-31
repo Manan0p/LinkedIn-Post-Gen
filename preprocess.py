@@ -25,6 +25,11 @@ def process_posts(raw_file_path, processed_file_path="data/processed_posts.json"
 
         unified_tags = get_unified_tags(enriched_posts)
 
+        for post in enriched_posts:
+            current_tags = post['tags']
+            new_tags = {unified_tags[tag] for tag in current_tags}
+            post['tags'] = list(new_tags)
+
 def get_unified_tags(posts_with_metadata):
     unique_tags = set()
     for post in posts_with_metadata:
