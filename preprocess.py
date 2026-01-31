@@ -23,6 +23,11 @@ def process_posts(raw_file_path, processed_file_path="data/processed_posts.json"
         for epost in enriched_posts:
             print(epost)
 
+        unified_tags = get_unified_tags(enriched_posts)
+
+def get_unified_tags(posts_with_metadata):
+    
+
 def extract_metadata(post):
     post = sanitize_text(post)
     template = '''
