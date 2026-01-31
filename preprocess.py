@@ -48,7 +48,17 @@ def get_unified_tags(posts_with_metadata):
     {tags}
     '''
 
-    "Job Search, Mental Health, Scams"
+    pt = PromptTemplate.from_template(template)
+    chain =  pt | llm
+    response = chain.invoke(input={'tags': str(unique_tags_list)})
+    try:
+        json_parser = JsonOutputParser()
+        res = json_parser.parse(response.content)
+        
+    except OutputParserException:
+        raise OutputParserException("Context too big. Unable to parse the jobs.")
+    
+    return res
 
 def extract_metadata(post):
     post = sanitize_text(post)
