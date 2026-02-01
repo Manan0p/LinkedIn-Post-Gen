@@ -10,11 +10,10 @@ class FewShotPosts:
     def load_posts(self,file_path):
         with open(file_path, encoding="utf-8") as f:
             posts = json.load(f)
-            df = pd.json_normalize(posts)
-            df["length"] = df["line_count"].apply(self.categorize_length)
-            all_tags = df["tags"].apply(lambda x: x).sum()
+            self.df = pd.json_normalize(posts)
+            self.df["length"] = self.df["line_count"].apply(self.categorize_length)
+            all_tags = self.df["tags"].apply(lambda x: x).sum()
             self.unique_tags = set(list(all_tags))
-            self.df = df
 
     def categorize_length(self, line_count):
         if line_count < 5:
