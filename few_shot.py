@@ -13,6 +13,14 @@ class FewShotPosts:
             df = pd.json_normalize(posts)
             self.df = df
 
+    def categorize_length(self, line_count):
+        if line_count < 5:
+            return "Short"
+        elif 5 <= line_count <= 10:
+            return "Medium"
+        else:
+            return "Long"
+
 if __name__ == "__main__":
     fs = FewShotPosts()
     pass
