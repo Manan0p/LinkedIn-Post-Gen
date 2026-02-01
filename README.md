@@ -2,7 +2,7 @@
 
 **LinkedIn Post Gen** is a lightweight AI-powered app that helps you **analyze existing LinkedIn posts**, **extract metadata**, and **generate new posts** in a similar writing style using Groq-hosted LLMs.
 
-**🌐 Live Demo:** (add your URL here)
+**🌐 Live Demo:** (https://manan0p-linkedin-post-gen.hf.space/)
 
 ## 🖼️ Product Tour
 
