@@ -25,7 +25,15 @@ class FewShotPosts:
         
     def get_tags(self):
         return self.unique_tags
-
+    
+    def get_filtered_posts(self, length, language, tag):
+        df_filtered = self.df[
+            (self.df['language'] == language) &
+            (self.df['length'] == length) &
+            (self.df['tags'].apply(lambda tags: tag in tags))
+        ]
+        return df_filtered.to_dict(orient='records')
+    
 if __name__ == "__main__":
     fs = FewShotPosts()
     posts = fs.get_filtered_posts("Medium", "Hinglish", "Job Search")
