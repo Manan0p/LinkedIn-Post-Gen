@@ -13,7 +13,7 @@ def generate_post(length, language, topic):
     prompt = f'''
     Generate a LinkedIn post using the below information. No preamble.
 
-    1) Topic: {tag}
+    1) Topic: {topic}
     2) Length: {length_str}
     3) Language: {language}
     If Language is Hinglish then it means it is a mix of Hindi and English. 
@@ -23,3 +23,6 @@ def generate_post(length, language, topic):
     response = llm.invoke(prompt)
     return response.content
 
+if __name__ == "__main__":
+    post = generate_post("Short", "English", "Job Search")
+    print(post)
