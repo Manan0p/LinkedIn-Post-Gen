@@ -12,6 +12,8 @@ class FewShotPosts:
             posts = json.load(f)
             df = pd.json_normalize(posts)
             df["length"] = df["line_count"].apply(self.categorize_length)
+            df["tags"].apply(lambda x: x).sum()
+            
             self.df = df
 
     def categorize_length(self, line_count):
