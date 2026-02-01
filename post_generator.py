@@ -23,6 +23,11 @@ def generate_post(length, language, topic):
     The script for the generated post should always be English.
     '''
 
+    examples = few_shot_posts = few_shot.get_filtered_posts(length, language, topic)
+
+    if len(examples) >0:
+        prompt += "4) Use the writing style as per the following examples."
+        
     response = llm.invoke(prompt)
     return response.content
 
