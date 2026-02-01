@@ -6,7 +6,10 @@ def main():
     col1, col2, col3 = st.columns(3)
     fs = FewShotPosts()
     with col1:
-        st.selectbox("Title", options=[fs.get_tags()])
+        st.selectbox("Topic", options=fs.get_tags())
+
+    with col2:
+        st.selectbox("Language", options=["English", "Hinglish", "Hindi"])
 
 if __name__ == "__main__":
     main()
