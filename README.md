@@ -2,7 +2,7 @@
 
 **LinkedIn Post Gen** is a lightweight AI-powered app that helps you **analyze existing LinkedIn posts**, **extract metadata**, and **generate new posts** in a similar writing style using Groq-hosted LLMs.
 
-**🌐 Live Demo:** (add your URL here)
+**🌐 Live Demo:** https://manan0p-linkedin-post-gen.hf.space/
 
 ## 🖼️ Product Tour
 
@@ -13,12 +13,6 @@ Here’s a quick look at the flow — from preprocessing posts to generating new
 Select a topic, length, and language to generate a LinkedIn post in the same writing style as prior examples.
 
 ![LinkedIn Post Generator UI](public/Post%20Generator.png)
-
-### Preprocessing Pipeline
-
-Raw posts are enriched with line counts, language detection, and unified tags before being used for few-shot prompting.
-
-![Preprocess Pipeline](public/Preprocess%20Pipeline.png)
 
 ---
 
