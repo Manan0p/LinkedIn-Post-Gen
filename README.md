@@ -14,12 +14,6 @@ Select a topic, length, and language to generate a LinkedIn post in the same wri
 
 ![LinkedIn Post Generator UI](public/Post%20Generator.png)
 
-### Preprocessing Pipeline
-
-Raw posts are enriched with line counts, language detection, and unified tags before being used for few-shot prompting.
-
-![Preprocess Pipeline](public/Preprocess%20Pipeline.png)
-
 ---
 
 ## 🎯 What This Project Does
