@@ -11,6 +11,7 @@ class FewShotPosts:
         with open(file_path, encoding="utf-8") as f:
             posts = json.load(f)
             df = pd.json_normalize(posts)
+            df["length"] = df["line_count"].apply(self.categorize_length)
             self.df = df
 
     def categorize_length(self, line_count):
