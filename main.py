@@ -9,13 +9,13 @@ def main():
     col1, col2, col3 = st.columns(3)
     fs = FewShotPosts()
     with col1:
-        st.selectbox("Topic", options=fs.get_tags())
+        selected_topic = st.selectbox("Topic", options=fs.get_tags())
 
     with col2:
-        st.selectbox("Length", options=length_options)
+        selected_length = st.selectbox("Length", options=length_options)
     
     with col3:
-        st.selectbox("Language", options=language_options)
+        selected_language = st.selectbox("Language", options=language_options)
 
 if __name__ == "__main__":
     main()
