@@ -12,6 +12,11 @@ def get_length_str(length):
         return "more than 10 lines"
 
 def generate_post(length, language, topic):
+    prompt = get_prompt(length, language, topic)
+    response = llm.invoke(prompt)
+    return response.content
+
+def get_prompt(length, language, topic):
     length_str = get_length_str(length)
     prompt = f'''
     Generate a LinkedIn post using the below information. No preamble.
@@ -23,7 +28,7 @@ def generate_post(length, language, topic):
     The script for the generated post should always be English.
     '''
 
-    examples = few_shot_posts = few_shot.get_filtered_posts(length, language, topic)
+    examples = few_shot.get_filtered_posts(length, language, topic)
 
     if len(examples) >0:
         prompt += "4) Use the writing style as per the following examples."
@@ -34,9 +39,7 @@ def generate_post(length, language, topic):
             if i == 1:
                 break
 
-    response = llm.invoke(prompt)
-    return response.content
+    return prompt
 
 if __name__ == "__main__":
-    post = generate_post("Short", "English", "Job Search")
-    print(post)
+    print(generate_post("Medium", "English", "Mental Health"))
