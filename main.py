@@ -9,6 +9,9 @@ def main():
         st.selectbox("Topic", options=fs.get_tags())
 
     with col2:
+        st.selectbox("Length", options=["Short", "Medium", "Long"])
+    
+    with col3:
         st.selectbox("Language", options=["English", "Hinglish", "Hindi"])
 
 if __name__ == "__main__":
