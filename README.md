@@ -1,28 +1,175 @@
+# LinkedIn Post Gen: AI Post Copilot
+
+**LinkedIn Post Gen** is a lightweight AI-powered app that helps you **analyze existing LinkedIn posts**, **extract metadata**, and **generate new posts** in a similar writing style using Groq-hosted LLMs.
+
+**🌐 Live Demo:** (add your URL here)
+
+## 🖼️ Product Tour
+
+Here’s a quick look at the flow — from preprocessing posts to generating new content.
+
+### Post Generator
+
+Select a topic, length, and language to generate a LinkedIn post in the same writing style as prior examples.
+
+![LinkedIn Post Generator UI](public/Post%20Generator.png)
+
+### Preprocessing Pipeline
+
+Raw posts are enriched with line counts, language detection, and unified tags before being used for few-shot prompting.
+
+![Preprocess Pipeline](public/Preprocess%20Pipeline.png)
+
 ---
-title: LinkedIn Post Gen
-emoji: 🚀
-colorFrom: red
-colorTo: red
-sdk: streamlit
-sdk_version: 1.31.0
-app_file: main.py
-python_version: "3.11"
-pinned: false
+
+## 🎯 What This Project Does
+
+LinkedIn Post Gen follows a simple flow: **collect posts → enrich metadata → unify tags → generate new posts with few-shot guidance**.
+
+It helps you:
+- Extract line counts, language, and tags from raw posts
+- Normalize tags into a clean, unified taxonomy
+- Generate new posts by topic, length, and language
+- Reuse topically similar examples for stylistic consistency
+
 ---
 
-# LinkedIn Post Generator
+## ✨ Core Features
 
-This tool will analyze posts of a LinkedIn influencer and help them create new posts based on the writing style in their old posts.
+- **🧠 Metadata Extraction** - LLM-based parsing of post length, language, and tags
+- **🏷️ Tag Unification** - Consolidates similar tags into clean canonical forms
+- **🧩 Few-Shot Prompting** - Reuses matching examples to guide style
+- **🗣️ Hinglish Support** - Generates mixed Hindi-English content in Latin script
+- **🖥️ Streamlit UI** - Simple interactive interface for generation
 
-## Technical Architecture
+---
 
-1. **Stage 1**: Collect LinkedIn posts and extract Topic, Language, Length etc. from it.
-2. **Stage 2**: Now use topic, language and length to generate a new post. Some of the past posts related to that specific topic, language and length will be used for few shot learning to guide the LLM about the writing style etc.
+## 👥 Who Is This For?
 
-## Setup
+Great for learning/building:
+- **LLM pipelines**: prompt templates + JSON parsing
+- **Few-shot generation**: style and topic alignment
+- **Streamlit apps**: quick UI for AI demos
+- **Tag normalization**: taxonomy cleanup with LLMs
 
-1. Get an API_KEY from https://console.groq.com/keys
-2. Add `GROQ_API_KEY` to Hugging Face Space secrets
-3. The app will run automatically!
+---
 
-Copyright (C) Codebasics Inc. All rights reserved.
+## 🛠 Tech Stack
+
+### Frontend
+- **Streamlit** - UI for interactive generation
+
+### Backend & AI
+- **Python 3.11+**
+- **LangChain Core** - Prompting + JSON parsing
+- **LangChain Groq** - Groq-hosted LLMs
+- **Pandas** - Data normalization and filtering
+- **python-dotenv** - Environment variables
+
+### Deployment
+- **Docker** - Containerized runtime
+
+---
+
+## 📁 Project Structure
+
+```text
+LinkedIn Post Gen/
+├── data/
+│   ├── raw_posts.json            # Raw input posts
+│   └── processed_posts.json      # Enriched posts with metadata
+├── few_shot.py                   # Loads and filters example posts
+├── llm_helper.py                 # Groq LLM client
+├── main.py                       # Streamlit app entry
+├── post_generator.py             # Prompting + generation
+├── preprocess.py                 # Metadata extraction + tag unification
+├── requirements.txt              # Python dependencies
+├── Dockerfile                    # Container config
+└── README.md
+```
+
+---
+
+## 🚀 Quick Start
+
+### 1) Prerequisites
+
+- Python 3.11+
+- A Groq API key
+
+### 2) Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3) Environment variables
+
+Create a `.env` file:
+
+```env
+GROQ_API_KEY=your_groq_api_key
+```
+
+### 4) Preprocess posts (one-time or as needed)
+
+```bash
+python preprocess.py
+```
+
+### 5) Run the Streamlit app
+
+```bash
+streamlit run main.py
+```
+
+Open http://localhost:8501
+
+---
+
+## 📊 How It Works (End-to-End)
+
+1. **Raw posts are loaded** from data/raw_posts.json
+2. **Metadata extraction** detects line count, language, and tags
+3. **Tag unification** merges similar tags into a clean set
+4. **Processed posts are saved** to data/processed_posts.json
+5. **Streamlit UI** lets users select topic, length, and language
+6. **Few-shot examples** are injected into the prompt
+7. **LLM generates** a new LinkedIn post
+
+---
+
+## 🐛 Troubleshooting
+
+| Issue | Likely Cause | Fix |
+|------|--------------|-----|
+| LLM errors or empty output | Missing/invalid `GROQ_API_KEY` | Add key to `.env` and restart |
+| No topics in dropdown | `processed_posts.json` missing or empty | Run `python preprocess.py` |
+| Docker app won’t start | Dockerfile expects a different entry | Update Dockerfile to use `main.py` |
+
+---
+
+## 🚢 Building for Production (Docker)
+
+```bash
+docker build -t linkedin-post-gen .
+docker run -p 8501:8501 linkedin-post-gen
+```
+
+---
+
+## 📝 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+**Copyright © 2026 Manan**
+
+---
+
+## 👨‍💻 Author
+
+Built by Manan.
+
+---
+
+**Ready to generate posts faster? Run the app and start creating.**
