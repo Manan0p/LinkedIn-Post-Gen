@@ -28,4 +28,5 @@ class FewShotPosts:
 
 if __name__ == "__main__":
     fs = FewShotPosts()
-    pass
+    posts = fs.get_filtered_posts("Medium", "Hinglish", "Job Search")
+    print(posts)
