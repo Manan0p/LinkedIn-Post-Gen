@@ -18,6 +18,7 @@ def main():
         selected_language = st.selectbox("Language", options=language_options)
 
     if st.button("Generate Post"):
+        st.write(f"Generated post for {selected_topic}, {selected_length}, {selected_language}")
 
 
 if __name__ == "__main__":
