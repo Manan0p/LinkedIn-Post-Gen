@@ -1,11 +1,18 @@
 import json
+import pandas as pd
 
 class FewShotPosts:
-    def __init__(self, filepath="data/processed_posts.json"):
+    def __init__(self, file_path="data/processed_posts.json"):
         self.df = None
         self.unique_tags = None
+        self.load_posts(file_path)
 
-    def load_post(self,file_path):
+    def load_posts(self,file_path):
         with open(file_path, encoding="utf-8") as f:
             posts = json.load(f)
-        pass
+            df = pd.json_normalize(posts)
+            self.df = df
+
+if __name__ == "__main__":
+    fs = FewShotPosts()
+    pass
