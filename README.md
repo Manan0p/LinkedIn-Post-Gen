@@ -1,4 +1,4 @@
-# LinkedIn Post Gen: AI Post Copilot
+# LinkedIn Post Gen
 
 **LinkedIn Post Gen** is a lightweight AI-powered app that helps you **analyze existing LinkedIn posts**, **extract metadata**, and **generate new posts** in a similar writing style using Groq-hosted LLMs.
 
